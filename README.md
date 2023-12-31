@@ -18,6 +18,7 @@
 - download github releases: wget paste-copied-link [ v1.1.tar/v2.1.zip]
 - tar -xvf v1.1.tar.gz/v2.1.tar.gz
 ### install node-16:
+- sudo apt update
 - curl -sL https://deb.nodesource.com/setup_16.x | sudo bash -
 - sudo apt-get install -y nodejs
 
@@ -50,12 +51,14 @@
 ## Nexus Artifacts Handling:
 - goto build server and upload artifact files
 - curl -v -u **username:password** --upload-file **file-name** **nexus-repo-link**
+- curl -v -u admin:amkamk3 --upload-file lms-1.1.tar http://54.183.136.152:8081/repository/lms/
 - goto nexus window and check
 
 ## Deploying Artifacts from nexus:
 - launch deployment servers
 - download artifats files from nexus
 - curl -u <username>:<password> -X GET 'http://20.172.187.108:8081/repository/lms/lms-1.1.tar' --output lms-1.1.tar
+- curl -u admin:amkamk3 -X GET 'http://54.183.136.152:8081/repository/lms/lms-1.1.tar' --output webapp.tar
 - tar -xvf lms-1.1.tar
 - install nginx : sudo apt install nginx -y
 - sudo rm -rf /var/www/html/*
