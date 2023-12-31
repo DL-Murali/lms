@@ -49,7 +49,7 @@
 
 ## Nexus Artifacts Handling:
 - goto build server and upload artifact files
-- **curl -v -u <username>:<password> --upload-file <file> <nexus-repo-link>**
+- curl -v -u **username:password** --upload-file **file-name** **nexus-repo-link**
 - goto nexus window and check
 
 ## Deploying Artifacts from nexus:
