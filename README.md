@@ -24,9 +24,9 @@
 - cd ~/lms
 - cd api/
 **- sudo vi .env**
-- MODE=production
-- PORT=8080
-- DATABASE_URL=postgresql://postgres:your-password@localhost:5432/postgres  
+  - MODE=production
+  - PORT=8080
+  - DATABASE_URL=postgresql://postgres:your-password@localhost:5432/postgres  
 - npm install
 - sudo npm install -g pm2
 - sudo npx prisma db push
