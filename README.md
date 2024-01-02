@@ -1,47 +1,33 @@
-# lms single server deployment
+# Sonar Analysis:
+- note: clone the code first
 - sudo apt update
-## postgres installation
-- sudo sh -c 'echo "deb https://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
-- wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
-- sudo apt-get update
-- sudo apt-get -y install postgresql
-- sudo ss -ntpl
-## postgres password setup
-- sudo su - postgres
-- psql
-- \password
-- enter your password
-- \q
-- exit
-## node installation
-- curl -sL https://deb.nodesource.com/setup_16.x | sudo bash -
-- sudo apt-get install -y nodejs
-- node -v
-- npm -v
-## clone the code
-- git clone -b dev https://github.com/DL-Murali/lms.git
-## build backend
+## docker install:
+- curl -fsSL https://get.docker.com -o install-docker.sh
+- sudo sh install-docker.sh
+## sonar container: 
+- sudo docker container run -dt --name sonarqube -p 9000:9000 sonarqube
+
+## sonar GUI:
+- Browse the Server ip-add:9000 
+Default credentials username: admin & password: admin
+- reset your password
+
+## project setup:
+- create a local project
+- Name: lms
+- Key: lms
+- Branch: dev / main
+- check: use the global settings
+- click on create project
+
+## Analyze your project :
+- Goto your project (lms) > overview
+- with locally
+- Generate the  token for sonarqube 
+- Update or add the sonarqube url, token and projectkey in command
+
+
+## goto workstation and run below cmd
+
 - cd ~/lms
-- cd api/
-**- sudo vi .env**
-  - MODE=production
-  - PORT=8080
-  - DATABASE_URL=postgresql://postgres:your-password@localhost:5432/postgres  
-- npm install
-- sudo npm install -g pm2
-- sudo npx prisma db push
-- npm run build
-- pm2 start build/index.js
-- sudo ss -ntpl
-- curl http://localhost:8080/api
-## build frontend
-- cd ~/lms/webapp/
-- **vi .env**
-- VITE_API_URL=http://public-ip:8080/api  
-- npm install
-- npm run build
-- sudo apt -y update
-- sudo apt -y install nginx
-- sudo rm -rf /var/www/html/*
-- sudo cp -r ~/lms/webapp/dist/* /var/www/html
-- sudo systemctl restart nginx 
+- sudo docker run --rm -e SONAR_HOST_URL="http://65.0.99.56:9000" -e SONAR_LOGIN="sqp_786a42390b59d43166d3a83144ef2eaff89ed41c" -v ".:/usr/src" sonarsource/sonar-scanner-cli -Dsonar.projectKey=lms
