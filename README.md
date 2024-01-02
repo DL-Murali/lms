@@ -37,7 +37,7 @@
 ## build frontend
 - cd ~/lms/webapp/
 - **vi .env**
-- VITE_API_URL=http://public-ip:8080/api  
+  - VITE_API_URL=http://public-ip:8080/api  
 - npm install
 - npm run build
 - sudo apt -y update
