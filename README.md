@@ -9,7 +9,7 @@
 
 ## sonar GUI:
 - Browse the Server ip-add:9000 
-Default credentials username: admin & password: admin
+Default credentials **username: admin & password: admin**
 - reset your password
 
 ## project setup:
