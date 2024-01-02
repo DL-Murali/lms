@@ -57,7 +57,7 @@
 ## Deploying Artifacts from nexus:
 - launch deployment servers
 - download artifats files from nexus
-- curl -u <username>:<password> -X GET 'http://20.172.187.108:8081/repository/lms/lms-1.1.tar' --output lms-1.1.tar
+- curl -u username:password -X GET 'http://20.172.187.108:8081/repository/lms/lms-1.1.tar' --output lms-1.1.tar
 - curl -u admin:amkamk3 -X GET 'http://54.183.136.152:8081/repository/lms/lms-1.1.tar' --output webapp.tar
 - tar -xvf lms-1.1.tar
 - install nginx : sudo apt install nginx -y
