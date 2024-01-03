@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: lms-be-service
 spec:
-  type: LoadBalancer
+  type: LoadBalancer        # This is for  k8s cluster for minikube use NodePort service
   ports:
   - port: 3000
   selector:
