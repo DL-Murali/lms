@@ -119,20 +119,20 @@
 
 ### Database
 - cd ~/lms/k8s
-- kubectl apply -f
-- kubectl apply -f
-- kubectl apply -f
+- kubectl apply -f pg-secret.yml
+- kubectl apply -f pg-deployment.yml
+- kubectl apply -f pg-service.yml
 
 ### Backend
 - build and push docker image
-- kubectl apply -f
-- kubectl apply -f
-- kubectl apply -f
+- kubectl apply -f be-configmap.yml
+- kubectl apply -f be-deployment.yml
+- kubectl apply -f be-service.yml
 
 ### Frontend
 - build and push dokcer image with new backend url
-- kubectl apply -f
-- kubectl apply -f
+- kubectl apply -f fe-deployment.yml
+- kubectl apply -f fe-service.yml
 - kubectl get all
 
 ## Delete resources once lab done
