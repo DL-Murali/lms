@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: lms-fe-service
+spec:
+  type: LoadBalancer        # This is for  k8s cluster for minikube use NodePort service
+  ports:
+  - port: 80
+  selector:
+    app: lms-fe
