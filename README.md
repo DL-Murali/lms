@@ -1,47 +1,14 @@
-# lms single server deployment
-- sudo apt update
-## postgres installation
-- sudo sh -c 'echo "deb https://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
-- wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
-- sudo apt-get update
-- sudo apt-get -y install postgresql
-- sudo ss -ntpl
-## postgres password setup
-- sudo su - postgres
-- psql
-- \password
-- enter your password
-- \q
-- exit
-## node installation
-- curl -sL https://deb.nodesource.com/setup_16.x | sudo bash -
-- sudo apt-get install -y nodejs
-- node -v
-- npm -v
-## clone the code
-- git clone -b dev https://github.com/DL-Murali/lms.git
-## build backend
-- cd ~/lms
-- cd api/
-**- sudo vi .env**
-  - MODE=production
-  - PORT=8080
-  - DATABASE_URL=postgresql://postgres:your-password@localhost:5432/postgres  
-- npm install
-- sudo npm install -g pm2
-- sudo npx prisma db push
-- npm run build
-- pm2 start build/index.js
-- sudo ss -ntpl
-- curl http://localhost:8080/api
-## build frontend
-- cd ~/lms/webapp/
-- **vi .env**
-  - VITE_API_URL=http://public-ip:8080/api  
-- npm install
-- npm run build
-- sudo apt -y update
-- sudo apt -y install nginx
-- sudo rm -rf /var/www/html/*
-- sudo cp -r ~/lms/webapp/dist/* /var/www/html
-- sudo systemctl restart nginx 
+# LMS Application
+
+![image](https://miro.medium.com/v2/resize:fit:1240/1*lCMW9Li5UDDdoPRAcNaglg.png)
+
+## Tech Stack
+### Database
+- PostgreSql - Latest version
+![image](https://www.shutterstock.com/image-vector/elephant-symbol-free-postgre-sql-600nw-1905420205.jpg)
+### Backend
+- NodeJs - 16 version
+![image](https://lh3.googleusercontent.com/proxy/u181HlIolM6NXOhQvT0CU3o84Bjt9yaIX6ZvPNG1UOq85V5wty5vwO01osA3CY8GzTHtK1J1FoQa6RqM7vV3CwdzeyeeREIWRAuNfy3G_7BfbKSprkgbKPopqMZ1SZRQkwikWQ)
+### Frontend
+- ReactJs
+![image](https://coderstrustbd.com/wp-content/uploads/2021/08/react-js-banner.jpg) 
