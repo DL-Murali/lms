@@ -1,143 +1,90 @@
-# LMS EKS Deployment
+# LMS Minikube Deployment
 
-## Create EKS cluster and add Nodegroup
+## STEP-1: Launch Server
+- Guide - https://minikube.sigs.k8s.io/docs/start/
+- Requirements —-------t2.medium instance in AWS
+- 2 CPUs or more
+- 2GB of free ram memory
+- 30GB of free disk space
 
-- Login to aws and goto EKS section
-- Now click on create cluster
-- Give a proper cluster name: lms-cluster
-- Select IAM role if you don’t have create one
+## STEP-2: Install Softwares
 
-### Click on create role 
-- Select EKS cluster related policies
-- Now goto your configuration and select created role
-- Configure cluster
-- Insert your role here
-
-- Specify networking
-
-- Configure logging
-
-- Select add-ons
-  - Core DNS
-  - Kube-proxy
-  - Amazon VPC CNI
-
-- Configure selected add-ons
-- Review and create
-- Check your created cluster it will take few minutes to create
-
-## Adding NodeGroup
-
-### Once cluster created add Nodegroup to it
-- Goto your EKS cluster
-- Goto compute section
-- Click on Add Nodegroup
-
-### Select IAM role if you don’t have create one
-- Click on create role 
-- Select EKS cluster Nodegroup related policies
-
-- Goto your cluster
-- Select: compute -> add node group
-- Configure node group
-- Name: lms-nodegroup
-- Add IAM role: amazoneksnoderole
-
-
-- Set compute and scaling configuration
-- node group  compute config
-  - select ami: Amazon linux 2
-  - instance type: t3.medium
-  - disk size of node: 20 gb
-- node group scaling config
-  - desired:2
-  - max:2
-  - min:2
-- node group update config
- - number : 1
-- Specify networking
-- Node group network configuration
-- Select subnets: 2
-
-- Review and create
-- Wait few minutes for creation of nodes
-
-
-## Launch k8s Workstation and connect it to EKS cluster
- - Os: ubuntu 20.0
- - T2.medium
- - Ports: 22, 80, 443 ( open all traffic )
-- Repo: git clone https://github.com/muralialakuntla3/k8s-hpa.git
-### Install aws cli :
-- Install unzip
-- sudo apt install unzip
-- curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
-- unzip awscliv2.zip
-- sudo ./aws/install
-- /usr/local/bin/aws --version
-- aws --version
-### Install Kubectl:
-- Visit : https://docs.aws.amazon.com/eks/latest/userguide/install-kubectl.html
-- curl -O https://s3.us-west-2.amazonaws.com/amazon-eks/1.27.6/2023-10-17/bin/linux/amd64/kubectl
-- curl -O https://s3.us-west-2.amazonaws.com/amazon-eks/1.27.6/2023-10-17/bin/linux/amd64/kubectl.sha256
-- openssl sha1 -sha256 kubectl
-- chmod +x ./kubectl
-- sudo mv kubectl /usr/local/bin
-### Install Docker:
-- visit: https://get.docker.com/
+### Update system
+- sudo apt update
+### Docker setup
+- Visit: https://get.docker.com/
 - curl -fsSL https://get.docker.com -o install-docker.sh
-- sudo sh install-docker.s
- - sudo usermod -aG docker ubuntu
-### Configure aws cli :
-- Create Access key and Secret key
-- Generate access key and secret key in aws
-- Goto IAM > Security credentials
-- Create access key
-- Copy access key and secret key
-- aws configure
-- AWS Access Key ID [None]: *************
-- AWS Secret Access Key [None]: *****************
-- Default region name [None]: ap-south-1
-- Default output format [None]: json
-- aws sts get-caller-identity
-- aws s3 ls
+- sudo sh install-docker.sh
+- sudo usermod -aG docker ubuntu
+- newgrp docker
+- docker -v 
 
-## Adding Workstation to EKS cluster:
-- Now goto your EKS cluster in aws
-- Goto your cluster Security Group
-- Add your Workstation pvt-ip or add vpc cidr
+### Kubectl setup
+- Visit: https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/#install-kubectl-binary-with-curl-on-linux
+- curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+- sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+- chmod +x kubectl
+- sudo mv kubectl /usr/local/bin/kubectl
+- kubectl version
 
-## Now goto your Workstation
-- aws eks list-clusters   -------> to list the cluster
-### Connecting clutter to workstation:
-- aws eks update-kubeconfig --name <cluster name> --region <region name>
-- cat ~/.kube/config    -------> to get cluster info
+### Minikube setup
+- Visit: https://minikube.sigs.k8s.io/docs/start/
+- curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+- sudo install minikube-linux-amd64 /usr/local/bin/minikube
+- minikube version
+- minikube status
+- minikube start
 
-## Deploy application
-- kubectl get all
-- kubectl get nodes
-
-### Database
+## STEP-3: Create K8S Manifest files
+- Code: git clone -b minikube https://github.com/DL-Murali/lms.git
 - cd ~/lms/k8s
-- kubectl apply -f pg-secret.yml
-- kubectl apply -f pg-deployment.yml
-- kubectl apply -f pg-service.yml
 
-### Backend
-- build and push docker image
+## STEP-4: Deploy K8S files
+
+### Database:
+- to encrypt the password
+- **echo -n Qwerty123 | base64**
+- **encrypted-pw**
+
+#### Postgresql k8s deployment
+- kubectl apply -f pg-secret.yml  
+  - to check secret: kubectl describe secret postgres-secret
+      
+- kubectl apply -f pg-deployment.yml
+- kubectl apply -f pg-cluster-ip.yml
+
+### Docker login:
+- generate PAT in docker hub
+- My Account -> settings -> New Access Token
+- login to your server
+- docker login -u muralialakuntla3
+- password: dckr_pat_T_****************
+
+### Backend:
+- cd ~/lms/api
+- docker build -t muralialakuntla3/lms-be .
+- docker push muralialakuntla3/lms-be
 - kubectl apply -f be-configmap.yml
+  - to check configmap: kubectl describe configmap backend-config-map
 - kubectl apply -f be-deployment.yml
 - kubectl apply -f be-service.yml
 
-### Frontend
-- build and push dokcer image with new backend url
+#### to check backend use port-forward cmd
+- kubectl port-forward service/lms-be-service 32100:3000 --address 0.0.0.0
+- check in browser: **pub-ip:32100
+  
+### Frontend:
+#### Connect frontend with backend  : 
+- cd ~/lms/webapp
+- sudo vi .env
+  - update backend-ip:32100 address
+
+#### frontend deployment
+- docker build -t muralialakuntla3/lms-fe .
+- docker push muralialakuntla3/lms-fe
 - kubectl apply -f fe-deployment.yml
 - kubectl apply -f fe-service.yml
-- kubectl get all
 
-## Delete resources once lab done
-- delete the nodegroup
-- delete eks cluster
-- delete roles
-- delete workstation
-
+#### to check backend use port-forward cmd
+- kubectl port-forward service/lms-fe-service 32200:80 --address 0.0.0.0
+- check in browser: pub-ip:32200
