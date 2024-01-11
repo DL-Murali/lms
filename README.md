@@ -1,5 +1,5 @@
 # LMS Minikube Deployment
-![image](https://miro.medium.com/v2/resize:fit:720/format:webp/1*1GIp-R_p2WZb6W4-4cKx5g.png)
+![image](https://miro.medium.com/v2/resize:fit:1358/1*YpBo8EdrWiQv8LSNFGvBXg.jpeg)
 
 
 ## STEP-1: Launch Server
