@@ -1,4 +1,5 @@
 # lms docker deployment
+![image](https://nordicapis.com/wp-content/uploads/Docker-API-infographic-container-devops-nordic-apis.png)
 
 ## install docker:
 - curl -fsSL https://get.docker.com -o install-docker.sh
