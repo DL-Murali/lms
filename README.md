@@ -1,5 +1,5 @@
 # LMS EKS Deployment
-
+![image](https://platform9.com/wp-content/uploads/2019/05/kubernetes-constructs-concepts-architecture.jpg)
 ## Create EKS cluster and add Nodegroup
 
 - Login to aws and goto EKS section
