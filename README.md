@@ -1,5 +1,5 @@
 # LMS Minikube Deployment
-![image](https://www.google.com/url?sa=i&url=https%3A%2F%2Faws.plainenglish.io%2Fkubernetes-minikube-101-d61947b9e091&psig=AOvVaw09UnhIIXnqz0x-PZi7AIF1&ust=1705074903630000&source=images&cd=vfe&opi=89978449&ved=0CBMQjRxqFwoTCMjzn5XZ1YMDFQAAAAAdAAAAABAD)
+![image](https://miro.medium.com/v2/resize:fit:720/format:webp/1*1GIp-R_p2WZb6W4-4cKx5g.png)
 
 
 ## STEP-1: Launch Server
