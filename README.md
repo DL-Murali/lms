@@ -1,5 +1,5 @@
 # Nexus Practical on LMS
-
+![image](https://user-images.githubusercontent.com/12953323/109366876-d640dc80-7894-11eb-9a4f-10be67c000f4.png)
 ## Nexus Server Req
 - t2.large
 - port:8081
