@@ -1,4 +1,6 @@
-# Sonar Analysis:
+# Sonar Analysis of LMS
+![image](https://assets-eu-01.kc-usercontent.com/c35a8dfe-3d03-0143-a0b9-1c34c7b9b595/4ad0d94c-e860-426e-bba4-b2e2c898f3e8/body-ebb832ef-78c8-47be-90ea-7aa77cb6779b_SonarQube%2BPR%2Banalysis%2Bworkflow.png?w=2352&h=1256&auto=format&fit=crop)
+## Server Setup
 - note: clone the code first
 - sudo apt update
 ## docker install:
