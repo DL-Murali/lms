@@ -1,5 +1,5 @@
 # LMS Minikube Deployment
-
+https://www.google.com/url?sa=i&url=https%3A%2F%2Faws.plainenglish.io%2Fkubernetes-minikube-101-d61947b9e091&psig=AOvVaw09UnhIIXnqz0x-PZi7AIF1&ust=1705074903630000&source=images&cd=vfe&opi=89978449&ved=0CBMQjRxqFwoTCMjzn5XZ1YMDFQAAAAAdAAAAABAD
 ## STEP-1: Launch Server
 - Guide - https://minikube.sigs.k8s.io/docs/start/
 - Requirements —-------t2.medium instance in AWS
