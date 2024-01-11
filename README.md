@@ -1,6 +1,6 @@
 # LMS Application
 
-![image](https://miro.medium.com/v2/resize:fit:1240/1*lCMW9Li5UDDdoPRAcNaglg.png)
+![image](https://media.licdn.com/dms/image/D5622AQES_ZVhaxsd6w/feedshare-shrink_800/0/1704992025683?e=1707955200&v=beta&t=ynPr0qpcMcpMejSEvoyByoY0oS1wjcFAen4j8uTQQwM)
 
 ## Database - PostgreSql - Latest version
 ![image](https://www.shutterstock.com/image-vector/elephant-symbol-free-postgre-sql-600nw-1905420205.jpg)
