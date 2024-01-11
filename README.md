@@ -1,4 +1,6 @@
-# lms single server deployment
+# LMS single server deployment
+![image]([https://miro.medium.com/v2/resize:fit:720/format:webp/1*1GIp-R_p2WZb6W4-4cKx5g.png](https://eginnovations.com/blog/wp-content/uploads/2021/09/Amazon-AWS-Cloud-Topimage-1.jpg))
+## Sever setup
 - sudo apt update
 ## postgres installation
 - sudo sh -c 'echo "deb https://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
