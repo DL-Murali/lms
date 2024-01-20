@@ -1,7 +1,7 @@
 resource "aws_security_group" "lms-sg" {
   name        = "lms-sg"
   description = "Allow TLS inbound traffic"
-  vpc_id      = aws_vpc.lms-vpc.id
+  vpc_id      = aws_vpc.lms_vpc.id
 
   ingress {
     description      = "ssh"
