@@ -8,7 +8,7 @@
 
 ## Backend - NodeJs - 16 version
 
-![image](https://lh3.googleusercontent.com/proxy/G9p4zp4hK-p-9_JRECey3sHVAtX7i2x0WgkXIt3vZ6xcv4Rx7GdLAaCn9-zWUqDnLjMPpwwRg3fimumCt8mgDU3KK3kWmhbPkb50jZWj6VzDJ83FVVEb2P1_uyg9Q1CsN-xl5w)
+![image](https://miro.medium.com/v2/resize:fit:1000/1*3pPJQKaUEdqQUjkWge0M3g.png)
 
 
 ## Database - PostgreSql - Latest version
