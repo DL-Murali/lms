@@ -1,7 +1,10 @@
 # Terraform
 ![image](https://spaceliftio.wpcomstaging.com/wp-content/uploads/2023/03/terraform-architecture-diagram.png)
 
-
+# Install Terraform Plugins in Vscode
+- HASHICORP TERRAFORM
+- HCL TERRAFORM
+- THESE PLUGINS WILL HELP FOR AUTO CORRESCTION 
 ## STEP-1: Launch Terraform Server
 - Guide - https://minikube.sigs.k8s.io/docs/start/
 - Requirements —-------t2.medium instance in AWS
