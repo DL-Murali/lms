@@ -18,7 +18,7 @@
 
 - cd ~/lms/api
 - docker build -t backend .
-- docker container run -dt --name backend -p 8080:8080 --network lmsnetwork -e DATABASE_URL=postgresql://postgres:password@lmsdb:5432/postgres --name backend -e PORT=8080 -e MODE=local backend
+- docker container run -dt --name backend -p 8080:8080 --network lmsnetwork -e DATABASE_URL=postgresql://postgres:password@lmsdb:5432/postgres -e PORT=8080 -e MODE=local backend
 - browse backend: pub-ip:8080/api
 
 ## Frontend:
