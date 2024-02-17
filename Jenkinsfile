@@ -16,3 +16,5 @@ pipeline {
 	        sh 'cd webapp && npm install && npm run build'
 	        }
        }	
+    
+    }
