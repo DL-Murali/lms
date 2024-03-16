@@ -1,6 +1,6 @@
 # LMS Application
 
-![image](https://media.licdn.com/dms/image/D5622AQES_ZVhaxsd6w/feedshare-shrink_800/0/1704992025683?e=1707955200&v=beta&t=ynPr0qpcMcpMejSEvoyByoY0oS1wjcFAen4j8uTQQwM)
+![image](https://media.licdn.com/dms/image/D5622AQES_ZVhaxsd6w/feedshare-shrink_1280/0/1704992025683?e=1713398400&v=beta&t=Ju_ZhGcUJvBMfdsdy_KYQfIaeqDl33Xf6DPE5tV9Cog)
 
 ## Frontend - ReactJs
 
